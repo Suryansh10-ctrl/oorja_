@@ -1,0 +1,757 @@
+
+
+<!-- PRELOADER -->
+<div id="preloader" class="fixed inset-0 z-[100] bg-ivory flex flex-col items-center justify-center gap-4">
+  <div class="loader-pulse text-center">
+    <div class="inline-block bg-terracotta text-ivory font-display text-4xl md:text-6xl px-6 py-3 border-[3px] border-charcoal hard-lg tracking-wide">OORJA</div>
+    <p class="font-grotesk text-xs tracking-[.35em] mt-4 font-bold">LOADING THE ENERGY…</p>
+    <div class="w-48 h-2 bg-cream border-2 border-charcoal mx-auto mt-3 overflow-hidden"><div id="loaderBar" class="h-full bg-terracotta w-0 transition-all duration-500"></div></div>
+  </div>
+</div>
+
+<!-- SCROLL PROGRESS -->
+<div class="fixed top-0 left-0 h-[4px] bg-terracotta z-[90] w-0" id="scrollProgress"></div>
+
+<!-- TOP TICKER -->
+<div class="bg-charcoal text-ivory py-2 marquee border-b-2 border-charcoal relative z-40">
+  <div class="marquee-track fast font-grotesk text-[11px] md:text-xs font-bold tracking-[.2em]">
+    <span class="px-6">OORJA 2026 &nbsp;•&nbsp; MARCH 6 – 8 &nbsp;•&nbsp; MAIN GROUND, NORTH CAMPUS &nbsp;•&nbsp; BHANGRA NIGHT &nbsp;•&nbsp; DJ NIGHT &nbsp;•&nbsp; STAR NIGHT &nbsp;•&nbsp; 40+ EVENTS &nbsp;•&nbsp; 5000+ FOOTFALL &nbsp;•&nbsp;</span>
+    <span class="px-6">OORJA 2026 &nbsp;•&nbsp; MARCH 6 – 8 &nbsp;•&nbsp; MAIN GROUND, NORTH CAMPUS &nbsp;•&nbsp; BHANGRA NIGHT &nbsp;•&nbsp; DJ NIGHT &nbsp;•&nbsp; STAR NIGHT &nbsp;•&nbsp; 40+ EVENTS &nbsp;•&nbsp; 5000+ FOOTFALL &nbsp;•&nbsp;</span>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<header id="navbar" class="sticky top-0 z-[80] bg-ivory/95 backdrop-blur-sm border-b-[3px] border-charcoal transition-all duration-300">
+  <nav class="max-w-7xl mx-auto px-4 md:px-8 h-[72px] flex items-center justify-between gap-4">
+    <a href="#" onclick="navigateTo('home');return false;" class="flex items-center gap-3 group">
+      <div class="w-11 h-11 bg-terracotta border-[2.5px] border-charcoal hard-sm flex items-center justify-center font-display text-ivory text-2xl pt-0.5 group-hover:rotate-[-6deg] transition-transform">O</div>
+      <div class="leading-none">
+        <div class="font-display text-2xl tracking-wide">OORJA<span class="text-terracotta">.</span></div>
+        <div class="font-grotesk text-[9px] font-bold tracking-[.3em] text-smoke">EST. 2012 • FEST COMMITTEE</div>
+      </div>
+    </a>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="#" data-nav="home" onclick="navigateTo('home');return false;" class="nav-link active">Home</a>
+      <a href="#" onclick="goHomeSection('about');return false;" class="nav-link">About</a>
+      <a href="#" onclick="goHomeSection('lineup');return false;" class="nav-link">Nights</a>
+      <a href="#" data-nav="events" onclick="navigateTo('events');return false;" class="nav-link">Events</a>
+      <a href="#" data-nav="team" onclick="navigateTo('team');return false;" class="nav-link">Team</a>
+      <a href="#" data-nav="gallery" onclick="navigateTo('gallery');return false;" class="nav-link">Gallery</a>
+      <a href="#" data-nav="contact" onclick="navigateTo('contact');return false;" class="nav-link">Contact</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <button onclick="openPassModal('full')" class="btn btn-terra text-xs md:text-sm px-4 md:px-6 py-2.5 md:py-3 hidden sm:inline-flex">Get Passes <i class="fa-solid fa-ticket"></i></button>
+      <button id="hamburger" onclick="toggleMobileMenu()" class="lg:hidden w-11 h-11 border-[2.5px] border-charcoal bg-paper hard-sm flex flex-col items-center justify-center gap-[5px]">
+        <span class="w-5 h-[2.5px] bg-charcoal block transition-all" id="hb1"></span>
+        <span class="w-5 h-[2.5px] bg-charcoal block transition-all" id="hb2"></span>
+        <span class="w-5 h-[2.5px] bg-charcoal block transition-all" id="hb3"></span>
+      </button>
+    </div>
+  </nav>
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="lg:hidden hidden border-t-[3px] border-charcoal bg-paper">
+    <div class="px-6 py-6 flex flex-col gap-1 font-grotesk font-bold uppercase tracking-widest text-lg">
+      <a href="#" onclick="navigateTo('home');return false;" class="py-3 border-b-2 border-cream flex justify-between items-center">Home <i class="fa-solid fa-arrow-right text-terracotta"></i></a>
+      <a href="#" onclick="goHomeSection('about');return false;" class="py-3 border-b-2 border-cream flex justify-between items-center">About <i class="fa-solid fa-arrow-right text-terracotta"></i></a>
+      <a href="#" onclick="goHomeSection('lineup');return false;" class="py-3 border-b-2 border-cream flex justify-between items-center">3 Nights <i class="fa-solid fa-arrow-right text-terracotta"></i></a>
+      <a href="#" onclick="navigateTo('events');return false;" class="py-3 border-b-2 border-cream flex justify-between items-center">Events <i class="fa-solid fa-arrow-right text-terracotta"></i></a>
+      <a href="#" onclick="navigateTo('team');return false;" class="py-3 border-b-2 border-cream flex justify-between items-center">Team <i class="fa-solid fa-arrow-right text-terracotta"></i></a>
+      <a href="#" onclick="navigateTo('gallery');return false;" class="py-3 border-b-2 border-cream flex justify-between items-center">Gallery <i class="fa-solid fa-arrow-right text-terracotta"></i></a>
+      <a href="#" onclick="navigateTo('contact');return false;" class="py-3 flex justify-between items-center">Contact <i class="fa-solid fa-arrow-right text-terracotta"></i></a>
+      <button onclick="openPassModal('full')" class="btn btn-terra w-full py-4 mt-3">Get Passes <i class="fa-solid fa-ticket"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== HOME PAGE ==================== -->
+<main id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="relative min-h-[94vh] flex items-end md:items-center overflow-hidden bg-charcoal">
+    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1920&auto=format&fit=crop" alt="OORJA festival crowd" class="absolute inset-0 w-full h-full object-cover opacity-70" />
+    <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/60 to-charcoal/30"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-transparent to-transparent"></div>
+    <div class="absolute top-0 left-0 w-full h-2 diagonal-stripes opacity-90"></div>
+
+    <!-- Floating polaroids desktop -->
+    <div class="hidden xl:block absolute right-10 top-24 z-20">
+      <div class="polaroid tape w-52 rotate-[6deg] floaty" style="--r:6deg">
+        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop" class="w-full h-36 object-cover border border-charcoal" alt="Concert" />
+        <p class="font-hand text-lg text-center py-1">star night '25</p>
+      </div>
+    </div>
+    <div class="hidden xl:block absolute right-56 bottom-40 z-20">
+      <div class="polaroid tape-terra w-48 rotate-[-7deg] floaty" style="--r:-7deg; animation-delay:1.2s">
+        <img src="https://images.unsplash.com/photo-1576089172869-4f5c6f315251?q=80&w=600&auto=format&fit=crop" class="w-full h-32 object-cover border border-charcoal" alt="Colours" />
+        <p class="font-hand text-lg text-center py-1">rang & dhol!</p>
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full pt-16 pb-14 md:py-20">
+      <div class="hero-anim inline-flex items-center gap-2 bg-mustard text-charcoal font-grotesk font-bold text-[11px] md:text-xs tracking-[.25em] px-4 py-2 border-2 border-charcoal hard-sm mb-5" style="animation-delay:.1s">
+        <span class="w-2 h-2 bg-terracotta rounded-full animate-pulse"></span> ANNUAL COLLEGE FEST • 2026 • NORTH CAMPUS
+      </div>
+      <h1 class="hero-anim font-display text-ivory leading-[.85] text-[26vw] sm:text-[20vw] lg:text-[11rem] xl:text-[12.5rem]" style="animation-delay:.25s">
+        OORJA<span class="text-mustard">.</span>
+      </h1>
+      <h2 class="hero-anim font-grotesk font-bold text-mustardLight md:text-mustard text-xl sm:text-2xl md:text-4xl tracking-tight mt-3" style="animation-delay:.4s">
+        WHERE ENERGY <span class="text-ivory">MEETS</span> CELEBRATION.
+      </h2>
+      <p class="hero-anim text-ivory/85 text-sm md:text-lg max-w-xl mt-4 leading-relaxed" style="animation-delay:.55s">
+        Three days of music, culture, competition, creativity and memories that stay with you long after the lights go down.
+      </p>
+      <div class="hero-anim flex flex-wrap gap-4 mt-8" style="animation-delay:.7s">
+        <button onclick="goHomeSection('lineup')" class="btn btn-terra px-7 py-4 text-sm">Explore Oorja <i class="fa-solid fa-arrow-down"></i></button>
+        <button onclick="navigateTo('team')" class="btn btn-outline-ivory px-7 py-4 text-sm">Meet The Team</button>
+      </div>
+      <!-- Countdown -->
+      <div class="hero-anim mt-10 flex flex-wrap items-center gap-3 md:gap-4" style="animation-delay:.85s">
+        <div class="font-grotesk text-ivory/70 text-[11px] font-bold tracking-[.25em] w-full md:w-auto mb-1 md:mb-0">COUNTDOWN TO DAY 1 — MAIN GROUND • 6 PM</div>
+        <div class="flex gap-2 md:gap-3">
+          <div class="bg-ivory border-2 border-charcoal hard-sm px-3 md:px-5 py-2 md:py-3 text-center min-w-[68px] md:min-w-[86px]"><div id="cd-d" class="font-display text-2xl md:text-4xl">00</div><div class="font-grotesk text-[9px] md:text-[10px] font-bold tracking-[.2em]">DAYS</div></div>
+          <div class="bg-ivory border-2 border-charcoal hard-sm px-3 md:px-5 py-2 md:py-3 text-center min-w-[68px] md:min-w-[86px]"><div id="cd-h" class="font-display text-2xl md:text-4xl">00</div><div class="font-grotesk text-[9px] md:text-[10px] font-bold tracking-[.2em]">HOURS</div></div>
+          <div class="bg-terracotta text-ivory border-2 border-charcoal hard-sm px-3 md:px-5 py-2 md:py-3 text-center min-w-[68px] md:min-w-[86px]"><div id="cd-m" class="font-display text-2xl md:text-4xl">00</div><div class="font-grotesk text-[9px] md:text-[10px] font-bold tracking-[.2em]">MINS</div></div>
+          <div class="bg-mustard border-2 border-charcoal hard-sm px-3 md:px-5 py-2 md:py-3 text-center min-w-[68px] md:min-w-[86px]"><div id="cd-s" class="font-display text-2xl md:text-4xl">00</div><div class="font-grotesk text-[9px] md:text-[10px] font-bold tracking-[.2em]">SECS</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hidden md:flex absolute left-6 bottom-24 z-10 items-center gap-3 vertical-text font-grotesk text-[10px] tracking-[.35em] text-ivory/60 font-bold">SCROLL • DANCE • CELEBRATE • REPEAT</div>
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-ivory/70">
+      <span class="font-grotesk text-[10px] tracking-[.3em] font-bold">SCROLL</span>
+      <div class="w-[2px] h-8 bg-ivory/40 overflow-hidden"><div class="w-full h-4 bg-mustard animate-bounce"></div></div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="bg-charcoal text-ivory border-y-[3px] border-charcoal">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 md:grid-cols-4 divide-x-2 divide-ivory/15 divide-y-2 md:divide-y-0 divide-ivory/15">
+      <div class="py-6 md:py-8 text-center px-2"><div class="font-display text-3xl md:text-5xl text-mustard"><span class="counter" data-target="3">0</span></div><div class="font-grotesk text-[11px] tracking-[.2em] font-bold mt-1 text-ivory/70">DAYS OF MADNESS</div></div>
+      <div class="py-6 md:py-8 text-center px-2"><div class="font-display text-3xl md:text-5xl text-mustard"><span class="counter" data-target="40">0</span>+</div><div class="font-grotesk text-[11px] tracking-[.2em] font-bold mt-1 text-ivory/70">EVENTS & COMPETITIONS</div></div>
+      <div class="py-6 md:py-8 text-center px-2"><div class="font-display text-3xl md:text-5xl text-mustard"><span class="counter" data-target="5000">0</span>+</div><div class="font-grotesk text-[11px] tracking-[.2em] font-bold mt-1 text-ivory/70">FOOTFALL EXPECTED</div></div>
+      <div class="py-6 md:py-8 text-center px-2"><div class="font-display text-3xl md:text-5xl text-mustard"><span class="counter" data-target="25">0</span>+</div><div class="font-grotesk text-[11px] tracking-[.2em] font-bold mt-1 text-ivory/70">COLLEGES COMPETING</div></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE STRIP -->
+  <div class="bg-terracotta text-ivory py-3 md:py-4 marquee border-b-[3px] border-charcoal -rotate-[.5deg] scale-[1.01] relative z-10">
+    <div class="marquee-track font-display text-xl md:text-3xl tracking-wide">
+      <span class="px-4">DHOL ✦ DANCE ✦ MUSIC ✦ NUKKAD ✦ FASHION ✦ FOOD ✦ FRIENDS ✦ MEMORIES ✦ DHOL ✦ DANCE ✦ MUSIC ✦ NUKKAD ✦ FASHION ✦ FOOD ✦ FRIENDS ✦ MEMORIES ✦&nbsp;</span>
+      <span class="px-4">DHOL ✦ DANCE ✦ MUSIC ✦ NUKKAD ✦ FASHION ✦ FOOD ✦ FRIENDS ✦ MEMORIES ✦ DHOL ✦ DANCE ✦ MUSIC ✦ NUKKAD ✦ FASHION ✦ FOOD ✦ FRIENDS ✦ MEMORIES ✦&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="paper-grain bg-ivory py-16 md:py-24 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-14">
+        <div class="lg:col-span-5 reveal-left">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-[3px] bg-terracotta"></div>
+            <span class="font-grotesk font-bold text-xs tracking-[.3em] text-terracotta">01 — WHO WE ARE</span>
+          </div>
+          <h2 class="font-display text-5xl md:text-7xl leading-[.9]">ABOUT<br><span class="text-terracotta">OORJA</span></h2>
+          <p class="font-hand text-2xl md:text-3xl text-olive mt-3 -rotate-2">made by students, for students!</p>
+          <div class="mt-8 flex gap-4">
+            <div class="polaroid tape w-1/2 rotate-[-4deg]">
+              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=600&auto=format&fit=crop" class="w-full h-44 md:h-56 object-cover border border-charcoal" alt="Students" />
+              <p class="font-hand text-lg text-center py-1">the fam, '25</p>
+            </div>
+            <div class="polaroid tape-olive w-1/2 rotate-[4deg] mt-8">
+              <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600&auto=format&fit=crop" class="w-full h-44 md:h-56 object-cover border border-charcoal" alt="Celebration" />
+              <p class="font-hand text-lg text-center py-1">lights & laughter</p>
+            </div>
+          </div>
+          <div class="mt-8 bg-charcoal text-ivory p-5 border-[3px] border-charcoal hard flex items-center gap-4">
+            <div class="font-display text-4xl text-mustard">14</div>
+            <div class="text-sm leading-snug"><strong>YEARS OF OORJA.</strong><br><span class="text-ivory/70">Since 2012 — run 100% by the student committee, every stage, stall & spotlight.</span></div>
+          </div>
+        </div>
+        <div class="lg:col-span-7 reveal-right">
+          <p class="font-grotesk text-xl md:text-2xl font-bold leading-snug">OORJA is not just a fest. It’s the <span class="bg-mustard px-2 border-2 border-charcoal">heartbeat of campus</span> — three days when classrooms empty and the ground fills with sound, colour and people.</p>
+          <div class="grid md:grid-cols-2 gap-6 mt-6 text-[15px] leading-relaxed text-smoke">
+            <p><span class="font-display text-4xl text-terracotta float-left mr-2 leading-[.8]">W</span>e are a student-driven committee that galvanizes the entire campus through music, dance, competitions and creativity. From morning eliminations to midnight encore, every event is planned, hosted and hustled by students like you.</p>
+            <p>Whether you’re a singer waiting for your stage, a dancer born for the spotlight, a coder, a creator, a foodie or just here for the vibe with your friends — <strong class="text-charcoal">there is a place for you at OORJA.</strong> Come for one event, stay for the people.</p>
+          </div>
+          <div class="grid sm:grid-cols-3 gap-4 mt-8">
+            <div class="bg-paper border-[2.5px] border-charcoal hard-sm p-4 text-center"><i class="fa-solid fa-microphone-lines text-terracotta text-2xl"></i><div class="font-grotesk font-bold text-sm mt-2 tracking-wide">LIVE STAGES</div><div class="text-xs text-smoke">Bands, DJs, folk & stars</div></div>
+            <div class="bg-paper border-[2.5px] border-charcoal hard-sm p-4 text-center"><i class="fa-solid fa-trophy text-mustard text-2xl"></i><div class="font-grotesk font-bold text-sm mt-2 tracking-wide">₹5L+ PRIZES</div><div class="text-xs text-smoke">Cash, goodies & glory</div></div>
+            <div class="bg-paper border-[2.5px] border-charcoal hard-sm p-4 text-center"><i class="fa-solid fa-utensils text-olive text-2xl"></i><div class="font-grotesk font-bold text-sm mt-2 tracking-wide">FOOD CARNIVAL</div><div class="text-xs text-smoke">30+ stalls, all 3 days</div></div>
+          </div>
+          <!-- STANDS FOR -->
+          <h3 class="font-display text-2xl md:text-3xl mt-10 mb-5">WHAT OORJA STANDS FOR</h3>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-terracotta text-ivory border-[2.5px] border-charcoal hard p-5 hard-hover"><div class="flex items-center gap-3"><span class="w-11 h-11 bg-ivory text-terracotta border-2 border-charcoal rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-bolt"></i></span><h4 class="font-grotesk font-bold tracking-widest">ENERGY</h4></div><p class="text-sm mt-3 text-ivory/90">Raw, loud, contagious campus energy — from dhol beats at 6 AM to the last DJ drop at midnight.</p></div>
+            <div class="bg-mustard border-[2.5px] border-charcoal hard p-5 hard-hover"><div class="flex items-center gap-3"><span class="w-11 h-11 bg-charcoal text-mustard border-2 border-charcoal rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-palette"></i></span><h4 class="font-grotesk font-bold tracking-widest">CREATIVITY</h4></div><p class="text-sm mt-3 text-charcoal/80">Art, fashion, theatre, film, code — every talent gets a stage and an audience that cheers.</p></div>
+            <div class="bg-olive text-ivory border-[2.5px] border-charcoal hard p-5 hard-hover"><div class="flex items-center gap-3"><span class="w-11 h-11 bg-ivory text-olive border-2 border-charcoal rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-people-group"></i></span><h4 class="font-grotesk font-bold tracking-widest">COMMUNITY</h4></div><p class="text-sm mt-3 text-ivory/90">Seniors, juniors, volunteers, rivals-turned-friends. OORJA is where the campus becomes family.</p></div>
+            <div class="bg-paper border-[2.5px] border-charcoal hard p-5 hard-hover"><div class="flex items-center gap-3"><span class="w-11 h-11 bg-warmorange text-ivory border-2 border-charcoal rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-camera-retro"></i></span><h4 class="font-grotesk font-bold tracking-widest">MEMORIES</h4></div><p class="text-sm mt-3 text-smoke">The photos you’ll show for years. The stories that start with “remember at OORJA when…”</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 DAYS -->
+  <section id="lineup" class="bg-charcoal text-ivory py-16 md:py-24 relative overflow-hidden scroll-mt-16">
+    <div class="absolute inset-0 opacity-[.07] halftone"></div>
+    <div class="absolute -right-10 top-10 font-display text-[18vw] leading-none text-transparent opacity-10 select-none hidden lg:block" style="-webkit-text-stroke:2px #F7F1E5">NIGHTS</div>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 relative">
+      <div class="text-center max-w-3xl mx-auto reveal">
+        <div class="inline-flex items-center gap-2 bg-terracotta text-ivory font-grotesk font-bold text-[11px] tracking-[.25em] px-4 py-2 border-2 border-ivory/20 mb-5">02 — THE MAIN NIGHTS • 6 PM ONWARDS</div>
+        <h2 class="font-display text-4xl sm:text-5xl md:text-7xl leading-[.95]">3 DAYS. 3 EXPERIENCES.<br><span class="text-mustard">1 OORJA.</span></h2>
+        <p class="text-ivory/70 mt-4 md:text-lg">Every night hits different. Pick your vibe — or better, live all three.</p>
+      </div>
+
+      <div class="mt-12 md:mt-16 space-y-8 md:space-y-10">
+        <!-- DAY 1 -->
+        <article class="day-card reveal bg-ivory text-charcoal border-[3px] border-ivory hard-mustard overflow-hidden grid lg:grid-cols-2">
+          <div class="relative min-h-[280px] lg:min-h-[420px]">
+            <img src="https://images.unsplash.com/photo-1576089172869-4f5c6f315251?q=80&w=1200&auto=format&fit=crop" alt="Bhangra Night" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute top-4 left-4 flex gap-2">
+              <span class="bg-mustard font-grotesk font-bold text-xs tracking-widest px-3 py-2 border-2 border-charcoal">DAY 01</span>
+              <span class="bg-charcoal text-ivory font-grotesk font-bold text-xs tracking-widest px-3 py-2 border-2 border-charcoal">FOLK • DESI</span>
+            </div>
+            <div class="absolute bottom-4 left-4 bg-ivory/95 border-2 border-charcoal px-3 py-2 font-hand text-xl rotate-[-2deg]">dhol > alarm clock</div>
+          </div>
+          <div class="p-6 md:p-10">
+            <div class="font-grotesk text-xs font-bold tracking-[.25em] text-terracotta">FRIDAY • MARCH 6 • 6 PM ONWARDS</div>
+            <h3 class="font-display text-4xl md:text-6xl mt-2">BHANGRA<br>NIGHT</h3>
+            <p class="text-smoke mt-3 md:text-[15px]">The ground shakes before the beat drops. Live dholis, folk singers, turban-tying, and a thousand people doing bhangra like nobody’s watching.</p>
+            <div class="grid sm:grid-cols-2 gap-3 mt-5 text-sm">
+              <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-terracotta"></i><strong>Main Ground Stage</strong></div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-clock text-terracotta"></i>6 PM – 11 PM</div>
+            </div>
+            <ul class="mt-5 space-y-2 text-sm">
+              <li class="flex gap-2 items-start"><span class="w-5 h-5 bg-olive text-ivory rounded-full flex items-center justify-center text-[10px] mt-0.5">✓</span> Live Dhol Troupe + Punjabi Folk Headliner</li>
+              <li class="flex gap-2 items-start"><span class="w-5 h-5 bg-olive text-ivory rounded-full flex items-center justify-center text-[10px] mt-0.5">✓</span> Inter-College Bhangra Face-Off Finals</li>
+              <li class="flex gap-2 items-start"><span class="w-5 h-5 bg-olive text-ivory rounded-full flex items-center justify-center text-[10px] mt-0.5">✓</span> Desi Food Lanes + Turban & Phulkari Stalls</li>
+            </ul>
+            <div class="flex flex-wrap gap-3 mt-6">
+              <button onclick="openPassModal('day1')" class="btn btn-terra px-6 py-3 text-xs">Book Day 1 Pass</button>
+              <button onclick="navigateTo('events')" class="btn bg-transparent border-charcoal px-6 py-3 text-xs hover:bg-charcoal hover:text-ivory">View Events</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- DAY 2 -->
+        <article class="day-card reveal bg-mustard text-charcoal border-[3px] border-ivory hard-ivory overflow-hidden grid lg:grid-cols-2">
+          <div class="p-6 md:p-10 order-2 lg:order-1">
+            <div class="font-grotesk text-xs font-bold tracking-[.25em]">SATURDAY • MARCH 7 • 7 PM ONWARDS</div>
+            <h3 class="font-display text-4xl md:text-6xl mt-2">DJ<br>NIGHT</h3>
+            <p class="mt-3 md:text-[15px] text-charcoal/80">Lasers, bass, glow bands and 5,000 hands in the air. Our biggest electronic night ever — come in white, leave glowing.</p>
+            <div class="grid sm:grid-cols-2 gap-3 mt-5 text-sm font-semibold">
+              <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot"></i>Amphitheatre Arena</div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-clock"></i>7 PM – 12 AM</div>
+            </div>
+            <ul class="mt-5 space-y-2 text-sm font-medium">
+              <li class="flex gap-2 items-start"><span class="w-5 h-5 bg-charcoal text-mustard rounded-full flex items-center justify-center text-[10px] mt-0.5">✓</span> Headline DJ + Opening EDM Battle Winners</li>
+              <li class="flex gap-2 items-start"><span class="w-5 h-5 bg-charcoal text-mustard rounded-full flex items-center justify-center text-[10px] mt-0.5">✓</span> Laser Show, CO₂ Blasts & Glow Theme</li>
+              <li class="flex gap-2 items-start"><span class="w-5 h-5 bg-charcoal text-mustard rounded-full flex items-center justify-center text-[10px] mt-0.5">✓</span> Silent-Disco Afterparty Zone (11 PM+)</li>
+            </ul>
+            <div class="flex flex-wrap gap-3 mt-6">
+              <button onclick="openPassModal('day2')" class="btn btn-charcoal px-6 py-3 text-xs">Book Day 2 Pass</button>
+              <button onclick="navigateTo('gallery')" class="btn bg-transparent border-charcoal px-6 py-3 text-xs hover:bg-charcoal hover:text-ivory">See Last Year</button>
+            </div>
+          </div>
+          <div class="relative min-h-[280px] lg:min-h-[420px] order-1 lg:order-2">
+            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200&auto=format&fit=crop" alt="DJ Night" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute top-4 right-4 flex gap-2">
+              <span class="bg-charcoal text-mustard font-grotesk font-bold text-xs tracking-widest px-3 py-2 border-2 border-charcoal">DAY 02</span>
+              <span class="bg-ivory font-grotesk font-bold text-xs tracking-widest px-3 py-2 border-2 border-charcoal">EDM • GLOW</span>
+            </div>
+            <div class="absolute bottom-4 right-4 bg-charcoal text-mustard border-2 border-mustard px-3 py-2 font-hand text-xl rotate-[2deg]">bass goes brrr</div>
+          </div>
+        </article>
+
+        <!-- DAY 3 -->
+        <article class="day-card reveal bg-terracotta text-ivory border-[3px] border-ivory overflow-hidden grid lg:grid-cols-2" style="box-shadow:6px 6px 0 #D4A72C">
+          <div class="relative min-h-[280px] lg:min-h-[420px]">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop" alt="Star Night" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-terracotta/20"></div>
+            <div class="absolute top-4 left-4 flex gap-2">
+              <span class="bg-ivory text-charcoal font-grotesk font-bold text-xs tracking-widest px-3 py-2 border-2 border-charcoal">DAY 03 • FINALE</span>
+              <span class="bg-mustard text-charcoal font-grotesk font-bold text-xs tracking-widest px-3 py-2 border-2 border-charcoal">STAR • LIVE</span>
+            </div>
+            <div class="absolute bottom-4 left-4 bg-ivory text-charcoal border-2 border-charcoal px-3 py-2 font-hand text-xl rotate-[-2deg]">the one you'll brag about</div>
+          </div>
+          <div class="p-6 md:p-10">
+            <div class="font-grotesk text-xs font-bold tracking-[.25em] text-mustardLight">SUNDAY • MARCH 8 • 7 PM ONWARDS</div>
+            <h3 class="font-display text-4xl md:text-6xl mt-2">STAR<br>NIGHT</h3>
+            <p class="mt-3 md:text-[15px] text-ivory/90">The legend takes the Main Stage. National artist live, prize distribution, aftermovie premiere and grand fireworks to close OORJA ’26.</p>
+            <div class="grid sm:grid-cols-2 gap-3 mt-5 text-sm font-semibold">
+              <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-mustard"></i>Main Stage, Main Ground</div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-clock text-mustard"></i>7 PM – 11:30 PM</div>
+            </div>
+            <ul class="mt-5 space-y-2 text-sm">
+              <li class="flex gap-2 items-start"><span class="w-5 h-5 bg-mustard text-charcoal rounded-full flex items-center justify-center text-[10px] mt-0.5 font-bold">✓</span> Celebrity Artist Live in Concert (TBA Soon)</li>
+              <li class="flex gap-2 items-start"><span class="w-5 h-5 bg-mustard text-charcoal rounded-full flex items-center justify-center text-[10px] mt-0.5 font-bold">✓</span> Overall Championship + ₹5L Prize Distribution</li>
+              <li class="flex gap-2 items-start"><span class="w-5 h-5 bg-mustard text-charcoal rounded-full flex items-center justify-center text-[10px] mt-0.5 font-bold">✓</span> Aftermovie Premiere + Grand Fireworks</li>
+            </ul>
+            <div class="flex flex-wrap gap-3 mt-6">
+              <button onclick="openPassModal('full')" class="btn btn-ivory px-6 py-3 text-xs">Book Finale Pass</button>
+              <button onclick="navigateTo('contact')" class="btn px-6 py-3 text-xs border-ivory text-ivory hover:bg-ivory hover:text-charcoal">Sponsor Us</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS PREVIEW -->
+  <section class="bg-cream py-16 md:py-24 border-y-[3px] border-charcoal paper-grain">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 reveal">
+        <div>
+          <div class="flex items-center gap-3 mb-3"><div class="w-10 h-[3px] bg-terracotta"></div><span class="font-grotesk font-bold text-xs tracking-[.3em] text-terracotta">03 — COMPETITIONS & CARNIVAL</span></div>
+          <h2 class="font-display text-4xl md:text-6xl leading-[.95]">40+ EVENTS.<br>ZERO BORING <span class="text-terracotta">HOURS.</span></h2>
+        </div>
+        <button onclick="navigateTo('events')" class="btn btn-charcoal px-6 py-3 text-sm shrink-0">View All Events <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
+        <div class="event-card reveal bg-paper border-[2.5px] border-charcoal hard overflow-hidden cursor-pointer" onclick="navigateTo('events')">
+          <div class="h-52 overflow-hidden border-b-[2.5px] border-charcoal relative"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Battle of Bands" /><span class="absolute top-3 left-3 bg-terracotta text-ivory text-[10px] font-grotesk font-bold tracking-widest px-2 py-1 border border-charcoal">OFFICIAL • MUSIC</span></div>
+          <div class="p-5"><h3 class="font-grotesk font-bold text-lg leading-tight">Battle of Bands</h3><p class="text-xs text-smoke mt-1 font-semibold">MAR 6 • MAIN STAGE • ₹50K PRIZE</p><p class="text-sm text-smoke mt-2">5 bands. One stage. Pure adrenaline and screaming crowds.</p></div>
+        </div>
+        <div class="event-card reveal bg-paper border-[2.5px] border-charcoal hard overflow-hidden cursor-pointer" onclick="navigateTo('events')" style="transition-delay:.1s">
+          <div class="h-52 overflow-hidden border-b-[2.5px] border-charcoal relative"><img src="https://images.unsplash.com/photo-1547153760-18fc86324498?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Dance" /><span class="absolute top-3 left-3 bg-mustard text-charcoal text-[10px] font-grotesk font-bold tracking-widest px-2 py-1 border border-charcoal">OFFICIAL • DANCE</span></div>
+          <div class="p-5"><h3 class="font-grotesk font-bold text-lg leading-tight">Nritya — Dance Face-Off</h3><p class="text-xs text-smoke mt-1 font-semibold">MAR 6 • AMPHITHEATRE • ₹30K</p><p class="text-sm text-smoke mt-2">Solo, duet & crew battles from classical to hip-hop.</p></div>
+        </div>
+        <div class="event-card reveal bg-paper border-[2.5px] border-charcoal hard overflow-hidden cursor-pointer" onclick="navigateTo('events')" style="transition-delay:.2s">
+          <div class="h-52 overflow-hidden border-b-[2.5px] border-charcoal relative"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Hackathon" /><span class="absolute top-3 left-3 bg-olive text-ivory text-[10px] font-grotesk font-bold tracking-widest px-2 py-1 border border-charcoal">OFFICIAL • TECH</span></div>
+          <div class="p-5"><h3 class="font-grotesk font-bold text-lg leading-tight">HackOORJA 24-Hour</h3><p class="text-xs text-smoke mt-1 font-semibold">MAR 7 • SEMINAR BLOCK • ₹75K</p><p class="text-sm text-smoke mt-2">Code through the night. Chai, bugs and big prizes.</p></div>
+        </div>
+        <div class="event-card reveal bg-paper border-[2.5px] border-charcoal hard overflow-hidden cursor-pointer" onclick="navigateTo('events')" style="transition-delay:.3s">
+          <div class="h-52 overflow-hidden border-b-[2.5px] border-charcoal relative"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Food" /><span class="absolute top-3 left-3 bg-warmorange text-ivory text-[10px] font-grotesk font-bold tracking-widest px-2 py-1 border border-charcoal">CARNIVAL • FOOD</span></div>
+          <div class="p-5"><h3 class="font-grotesk font-bold text-lg leading-tight">Food Carnival + Cook-Off</h3><p class="text-xs text-smoke mt-1 font-semibold">ALL 3 DAYS • FOOD LANE</p><p class="text-sm text-smoke mt-2">30+ stalls, street-food contest & midnight maggi.</p></div>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-wrap justify-center gap-3 font-grotesk text-xs font-bold tracking-widest">
+        <span class="bg-paper border-2 border-charcoal px-4 py-2">MUSIC</span><span class="bg-paper border-2 border-charcoal px-4 py-2">DANCE</span><span class="bg-paper border-2 border-charcoal px-4 py-2">THEATRE</span><span class="bg-paper border-2 border-charcoal px-4 py-2">FASHION</span><span class="bg-paper border-2 border-charcoal px-4 py-2">GAMING</span><span class="bg-paper border-2 border-charcoal px-4 py-2">SPORTS</span><span class="bg-terracotta text-ivory border-2 border-charcoal px-4 py-2">+ MANY MORE →</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMORIES WALL -->
+  <section class="bg-ivory py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center reveal">
+        <div class="font-grotesk font-bold text-xs tracking-[.3em] text-terracotta">04 — LOVE FROM CAMPUS</div>
+        <h2 class="font-display text-4xl md:text-6xl mt-2">MEMORIES THAT <span class="text-terracotta">STAY.</span></h2>
+        <p class="font-hand text-2xl text-olive mt-2">real words from real oorja fam</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 mt-10">
+        <div class="reveal bg-paper border-[2.5px] border-charcoal hard p-6 rotate-[-1deg]">
+          <div class="text-mustard text-lg tracking-widest">★★★★★</div>
+          <p class="mt-3 text-[15px] leading-relaxed">“I came for one dance audition and ended up on stage all three nights. OORJA gave me my best friends and my confidence.”</p>
+          <div class="flex items-center gap-3 mt-5"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop" class="w-11 h-11 rounded-full object-cover border-2 border-charcoal" alt="Diya" /><div><div class="font-grotesk font-bold text-sm">Diya Sharma</div><div class="text-xs text-smoke">B.Com II Yr • Dance Crew</div></div></div>
+        </div>
+        <div class="reveal bg-charcoal text-ivory border-[2.5px] border-charcoal p-6 rotate-[1deg]" style="box-shadow:6px 6px 0 #C65332; transition-delay:.12s">
+          <div class="text-mustard text-lg tracking-widest">★★★★★</div>
+          <p class="mt-3 text-[15px] leading-relaxed">“Star Night ’25 was unreal. 5,000 people singing together under fireworks — I still get goosebumps thinking about it.”</p>
+          <div class="flex items-center gap-3 mt-5"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" class="w-11 h-11 rounded-full object-cover border-2 border-mustard" alt="Aarav" /><div><div class="font-grotesk font-bold text-sm">Aarav Mehta</div><div class="text-xs text-ivory/60">B.Tech III Yr • Volunteer</div></div></div>
+        </div>
+        <div class="reveal bg-paper border-[2.5px] border-charcoal hard p-6 rotate-[-1deg]" style="transition-delay:.24s">
+          <div class="text-mustard text-lg tracking-widest">★★★★★</div>
+          <p class="mt-3 text-[15px] leading-relaxed">“Won ₹10K at the rap battle, lost my voice at DJ night, found my people at the food lane. 10/10 would bunk again.”</p>
+          <div class="flex items-center gap-3 mt-5"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=200&auto=format&fit=crop" class="w-11 h-11 rounded-full object-cover border-2 border-charcoal" alt="Kabir" /><div><div class="font-grotesk font-bold text-sm">Kabir Singh</div><div class="text-xs text-smoke">BA English • Rap Finalist</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASSES -->
+  <section id="passes" class="bg-mustard py-16 md:py-24 border-y-[3px] border-charcoal relative overflow-hidden scroll-mt-16">
+    <div class="absolute inset-0 opacity-10 halftone"></div>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 relative">
+      <div class="text-center reveal">
+        <div class="inline-block bg-charcoal text-mustard font-grotesk font-bold text-[11px] tracking-[.25em] px-4 py-2 border-2 border-charcoal mb-4">05 — PASSES • LIMITED • SELLING FAST</div>
+        <h2 class="font-display text-4xl md:text-6xl">GRAB YOUR <span class="text-terracotta">PASS.</span></h2>
+        <p class="font-semibold text-charcoal/70 mt-2">Early-bird prices till Feb 20. College ID mandatory at entry.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 mt-10 max-w-5xl mx-auto items-stretch">
+        <div class="reveal bg-ivory border-[3px] border-charcoal hard-lg p-7 flex flex-col ticket-notch">
+          <div class="font-grotesk font-bold text-xs tracking-[.25em] text-smoke">DAY PASS</div>
+          <div class="font-display text-5xl mt-2">₹299</div>
+          <div class="text-xs font-bold text-smoke">ANY ONE DAY • + ENTRY TO CARNIVAL</div>
+          <ul class="text-sm mt-5 space-y-2 flex-1"><li>✓ Any 1 night (Bhangra / DJ / Star)</li><li>✓ Access to 10+ unofficial events</li><li>✓ Food carnival entry</li><li class="opacity-40">✕ All 3 nights access</li><li class="opacity-40">✕ Front-row pit access</li></ul>
+          <button onclick="openPassModal('day1')" class="btn w-full py-3 mt-6 text-xs border-charcoal hover:bg-charcoal hover:text-ivory">Choose Day Pass</button>
+        </div>
+        <div class="reveal bg-charcoal text-ivory border-[3px] border-charcoal p-7 flex flex-col relative ticket-notch md:-mt-4 md:mb-[-1rem]" style="box-shadow:8px 8px 0 #C65332; transition-delay:.12s">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-terracotta text-ivory font-grotesk font-bold text-[11px] tracking-[.2em] px-4 py-1.5 border-2 border-charcoal whitespace-nowrap">MOST POPULAR ★</div>
+          <div class="font-grotesk font-bold text-xs tracking-[.25em] text-mustard mt-2">FULL 3-DAY PASS</div>
+          <div class="font-display text-6xl mt-2">₹699 <span class="text-lg text-ivory/50 line-through align-middle">₹899</span></div>
+          <div class="text-xs font-bold text-mustard">ALL 3 NIGHTS • BEST VALUE</div>
+          <ul class="text-sm mt-5 space-y-2 flex-1 text-ivory/90"><li>✓ Bhangra + DJ + Star Night</li><li>✓ All official eliminations access</li><li>✓ Afterparty + fireworks zone</li><li>✓ OORJA wristband + stickers</li><li>✓ Priority entry lane</li></ul>
+          <button onclick="openPassModal('full')" class="btn btn-terra w-full py-3.5 mt-6 text-sm">Get Full Pass <i class="fa-solid fa-bolt"></i></button>
+        </div>
+        <div class="reveal bg-ivory border-[3px] border-charcoal hard-lg p-7 flex flex-col ticket-notch" style="transition-delay:.24s">
+          <div class="font-grotesk font-bold text-xs tracking-[.25em] text-smoke">SQUAD PASS • 4 PEOPLE</div>
+          <div class="font-display text-5xl mt-2">₹1999</div>
+          <div class="text-xs font-bold text-smoke">₹500 EACH • COME WITH YOUR PEOPLE</div>
+          <ul class="text-sm mt-5 space-y-2 flex-1"><li>✓ 4 × Full 3-day passes</li><li>✓ Squad photo at 360° booth</li><li>✓ Reserved group entry</li><li>✓ 4 food coupons worth ₹400</li><li>✓ Mystery OORJA merch</li></ul>
+          <button onclick="openPassModal('squad')" class="btn w-full py-3 mt-6 text-xs bg-olive text-ivory border-charcoal hover:bg-charcoal">Choose Squad Pass</button>
+        </div>
+      </div>
+      <p class="text-center text-xs font-bold tracking-widest mt-8 text-charcoal/60">⚠ PASSES ARE NON-TRANSFERABLE • COLLEGE ID + PASS REQUIRED • OUTSIDERS WITH VALID ID ALLOWED FOR STAR NIGHT</p>
+    </div>
+  </section>
+
+  <!-- SPONSORS -->
+  <section class="bg-ivory py-12 border-b-[3px] border-charcoal">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <p class="text-center font-grotesk font-bold text-xs tracking-[.3em] text-smoke reveal">POWERED BY FRIENDS WHO BELIEVE IN STUDENT CULTURE</p>
+      <div class="marquee mt-6"><div class="marquee-track slow items-center gap-10 font-display text-2xl md:text-3xl text-charcoal/30">
+        <span class="px-6">CHAI SUTTA •</span><span class="px-6">BOAT •</span><span class="px-6">ZOMATO •</span><span class="px-6">RED BULL •</span><span class="px-6">CAMPUS DIARIES •</span><span class="px-6">SWIGGY •</span>
+        <span class="px-6">CHAI SUTTA •</span><span class="px-6">BOAT •</span><span class="px-6">ZOMATO •</span><span class="px-6">RED BULL •</span><span class="px-6">CAMPUS DIARIES •</span><span class="px-6">SWIGGY •</span>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- BIG CTA -->
+  <section class="bg-terracotta text-ivory py-16 md:py-24 relative overflow-hidden paper-grain">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 text-center relative reveal-scale">
+      <div class="stamp inline-block px-5 py-2 font-grotesk font-bold text-xs tracking-[.3em] text-mustardLight mb-6 rotate-[-3deg]">MARCH 6 – 8 • MAIN GROUND</div>
+      <h2 class="font-display text-[11vw] md:text-7xl lg:text-8xl leading-[.92]">WHERE THE CAMPUS<br>COMES <span class="text-mustard">ALIVE.</span></h2>
+      <p class="mt-5 text-ivory/85 max-w-xl mx-auto md:text-lg">Three days. One energy. Don’t hear about it later — be in the photos, the videos, the stories.</p>
+      <div class="flex flex-wrap justify-center gap-4 mt-8">
+        <button onclick="openPassModal('full')" class="btn btn-ivory px-8 py-4 text-sm">Get Your Pass Now</button>
+        <button onclick="navigateTo('contact')" class="btn px-8 py-4 text-sm border-ivory text-ivory hover:bg-ivory hover:text-charcoal">Contact Committee</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ==================== EVENTS PAGE ==================== -->
+<main id="page-events" class="page">
+  <section class="bg-charcoal text-ivory pt-14 pb-10 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[.07] halftone"></div>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 relative">
+      <div class="font-grotesk font-bold text-xs tracking-[.3em] text-mustard">COMPETITIONS • WORKSHOPS • CARNIVAL</div>
+      <h1 class="font-display text-6xl md:text-8xl mt-2">EVENTS<span class="text-terracotta">.</span></h1>
+      <p class="text-ivory/70 max-w-2xl mt-3 md:text-lg">Official championships with cash prizes & trophies — plus unofficial carnival chaos just for fun. Filter, find your stage, register.</p>
+      <div class="flex flex-col md:flex-row gap-3 mt-7">
+        <div class="relative flex-1 max-w-md">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-smoke"></i>
+          <input id="eventSearch" oninput="renderEvents()" type="text" placeholder="Search events… (dance, code, food…)" class="w-full bg-ivory text-charcoal border-[2.5px] border-ivory pl-11 pr-4 py-3 font-semibold text-sm placeholder:text-smoke/60" />
+        </div>
+        <div class="flex gap-2 flex-wrap" id="typeFilters">
+          <button class="filter-pill !bg-mustard active" data-type="all" onclick="setEventType('all',this)">All Events</button>
+          <button class="filter-pill !bg-ivory" data-type="official" onclick="setEventType('official',this)">Official</button>
+          <button class="filter-pill !bg-ivory" data-type="unofficial" onclick="setEventType('unofficial',this)">Unofficial</button>
+        </div>
+      </div>
+      <div class="flex gap-2 mt-4 overflow-x-auto pb-2" id="catFilters"></div>
+    </div>
+  </section>
+
+  <section class="bg-ivory py-12 md:py-16 paper-grain">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div id="officialWrap">
+        <div class="flex items-center gap-4 mb-6">
+          <h2 class="font-display text-3xl md:text-5xl">OFFICIAL <span class="text-terracotta">CHAMPIONSHIPS</span></h2>
+          <div class="flex-1 h-[3px] bg-charcoal"></div>
+          <span class="font-grotesk font-bold text-xs tracking-widest bg-charcoal text-ivory px-3 py-2">CASH PRIZES</span>
+        </div>
+        <div id="officialGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+      <div id="unofficialWrap" class="mt-14">
+        <div class="flex items-center gap-4 mb-6">
+          <h2 class="font-display text-3xl md:text-5xl">UNOFFICIAL <span class="text-olive">& CARNIVAL</span></h2>
+          <div class="flex-1 h-[3px] bg-charcoal"></div>
+          <span class="font-grotesk font-bold text-xs tracking-widest bg-olive text-ivory px-3 py-2">JUST FOR FUN</span>
+        </div>
+        <div id="unofficialGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+      <div id="noEvents" class="hidden text-center py-16">
+        <div class="font-display text-4xl">NO VIBES FOUND</div>
+        <p class="text-smoke mt-2">Try a different search or category.</p>
+        <button onclick="resetEventFilters()" class="btn btn-terra px-6 py-3 text-xs mt-5">Reset Filters</button>
+      </div>
+      <div class="mt-12 bg-mustard border-[3px] border-charcoal hard-lg p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+        <div class="flex-1"><h3 class="font-display text-2xl md:text-4xl">NOT SURE WHERE YOU FIT?</h3><p class="font-semibold text-charcoal/70 mt-1">DM us on Instagram or talk to any volunteer in the orange OORJA tee. We’ll find your stage.</p></div>
+        <button onclick="navigateTo('contact')" class="btn btn-charcoal px-7 py-4 text-sm shrink-0">Ask The Committee</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ==================== TEAM PAGE ==================== -->
+<main id="page-team" class="page">
+  <section class="bg-terracotta text-ivory pt-14 pb-10 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 halftone"></div>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 relative">
+      <div class="font-grotesk font-bold text-xs tracking-[.3em] text-mustardLight">THE HUMANS BEHIND THE CHAOS</div>
+      <h1 class="font-display text-6xl md:text-8xl mt-2">MEET THE <span class="text-mustard">TEAM.</span></h1>
+      <p class="text-ivory/85 max-w-2xl mt-3 md:text-lg">60+ volunteers. 15 leads. 1 family. We plan for 6 months so you can party for 3 days.</p>
+      <div class="flex gap-2 mt-6 overflow-x-auto pb-2" id="teamFilters">
+        <button class="filter-pill active" data-dept="all" onclick="setTeamDept('all',this)">Everyone</button>
+        <button class="filter-pill" data-dept="Core" onclick="setTeamDept('Core',this)">Core</button>
+        <button class="filter-pill" data-dept="Cultural" onclick="setTeamDept('Cultural',this)">Cultural</button>
+        <button class="filter-pill" data-dept="Technical" onclick="setTeamDept('Technical',this)">Technical</button>
+        <button class="filter-pill" data-dept="Marketing" onclick="setTeamDept('Marketing',this)">Marketing</button>
+        <button class="filter-pill" data-dept="Logistics" onclick="setTeamDept('Logistics',this)">Logistics</button>
+        <button class="filter-pill" data-dept="Creative" onclick="setTeamDept('Creative',this)">Creative</button>
+      </div>
+    </div>
+  </section>
+  <section class="bg-ivory py-12 md:py-16 paper-grain">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div id="teamGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+      <div class="mt-12 grid md:grid-cols-2 gap-6">
+        <div class="bg-charcoal text-ivory border-[3px] border-charcoal p-7 hard" style="box-shadow:6px 6px 0 #C65332">
+          <h3 class="font-display text-3xl">WANT TO JOIN <span class="text-mustard">OORJA ’27?</span></h3>
+          <p class="text-ivory/70 mt-2 text-sm">Recruitment opens every August. Volunteers get certificates, merch, afterparty access and memories for life.</p>
+          <button onclick="navigateTo('contact')" class="btn btn-terra px-6 py-3 text-xs mt-5">Register Interest</button>
+        </div>
+        <div class="bg-paper border-[3px] border-charcoal hard p-7">
+          <h3 class="font-display text-3xl">FACULTY <span class="text-terracotta">MENTORS</span></h3>
+          <div class="mt-4 space-y-3 text-sm">
+            <div class="flex items-center gap-3"><div class="w-10 h-10 bg-olive text-ivory rounded-full flex items-center justify-center font-grotesk font-bold border-2 border-charcoal">DR</div><div><strong>Dr. Ritu Malhotra</strong> — Convenor, Cultural Council</div></div>
+            <div class="flex items-center gap-3"><div class="w-10 h-10 bg-mustard rounded-full flex items-center justify-center font-grotesk font-bold border-2 border-charcoal">PS</div><div><strong>Prof. Sanjay Yadav</strong> — Co-Convenor, Student Affairs</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ==================== GALLERY PAGE ==================== -->
+<main id="page-gallery" class="page">
+  <section class="bg-mustard pt-14 pb-10 border-b-[3px] border-charcoal relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 halftone"></div>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 relative">
+      <div class="font-grotesk font-bold text-xs tracking-[.3em]">OORJA ’23 • ’24 • ’25 — THE ARCHIVES</div>
+      <h1 class="font-display text-6xl md:text-8xl mt-2">GALLERY<span class="text-terracotta">.</span></h1>
+      <p class="max-w-2xl mt-3 md:text-lg font-medium text-charcoal/70">Crowds, colours, confetti and questionable dance moves. Click any photo to relive it.</p>
+      <div class="flex gap-2 mt-6 overflow-x-auto pb-2" id="galFilters">
+        <button class="filter-pill active" data-gal="all" onclick="setGalCat('all',this)">All Photos</button>
+        <button class="filter-pill" data-gal="Concerts" onclick="setGalCat('Concerts',this)">Concerts</button>
+        <button class="filter-pill" data-gal="Dance" onclick="setGalCat('Dance',this)">Dance</button>
+        <button class="filter-pill" data-gal="Culture" onclick="setGalCat('Culture',this)">Culture</button>
+        <button class="filter-pill" data-gal="Crowd" onclick="setGalCat('Crowd',this)">Crowd</button>
+        <button class="filter-pill" data-gal="Fun" onclick="setGalCat('Fun',this)">Fun & Food</button>
+      </div>
+    </div>
+  </section>
+  <section class="bg-ivory py-12 paper-grain">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div id="galleryGrid" class="masonry"></div>
+      <div class="text-center mt-10 bg-paper border-[3px] border-charcoal hard p-8">
+        <h3 class="font-display text-3xl">SHOT SOMETHING ICONIC AT OORJA?</h3>
+        <p class="text-smoke mt-2">Tag <strong class="text-charcoal">@oorja.fest</strong> on Instagram with <strong class="text-charcoal">#MyOorjaMoment</strong> — best shots get featured + win merch.</p>
+        <button onclick="showToast('Opening Instagram… follow @oorja.fest','success')" class="btn btn-terra px-6 py-3 text-xs mt-5"><i class="fa-brands fa-instagram"></i> @oorja.fest</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ==================== CONTACT PAGE ==================== -->
+<main id="page-contact" class="page">
+  <section class="bg-charcoal text-ivory pt-14 pb-10 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[.07] halftone"></div>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 relative">
+      <div class="font-grotesk font-bold text-xs tracking-[.3em] text-mustard">SPONSORSHIPS • QUERIES • LOST & FOUND</div>
+      <h1 class="font-display text-6xl md:text-8xl mt-2">TALK TO <span class="text-mustard">US.</span></h1>
+      <p class="text-ivory/70 max-w-2xl mt-3 md:text-lg">We reply fast — usually between lectures. For urgent fest-day help, call the helpline.</p>
+    </div>
+  </section>
+  <section class="bg-ivory py-12 md:py-16 paper-grain">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 grid lg:grid-cols-5 gap-8">
+      <div class="lg:col-span-3">
+        <form id="contactForm" onsubmit="submitContact(event)" class="bg-paper border-[3px] border-charcoal hard-lg p-6 md:p-9">
+          <h2 class="font-display text-3xl">SEND A MESSAGE</h2>
+          <p class="text-sm text-smoke mt-1">For event doubts, passes, stalls & sponsorships.</p>
+          <div class="grid sm:grid-cols-2 gap-4 mt-6">
+            <div><label class="font-grotesk font-bold text-xs tracking-widest">YOUR NAME *</label><input required id="c-name" type="text" placeholder="e.g. Priya Sharma" class="mt-2 w-full border-[2.5px] border-charcoal bg-ivory px-4 py-3 text-sm font-semibold" /></div>
+            <div><label class="font-grotesk font-bold text-xs tracking-widest">PHONE *</label><input required id="c-phone" type="tel" pattern="[0-9+ ]{10,15}" placeholder="98765 43210" class="mt-2 w-full border-[2.5px] border-charcoal bg-ivory px-4 py-3 text-sm font-semibold" /></div>
+          </div>
+          <div class="mt-4"><label class="font-grotesk font-bold text-xs tracking-widest">EMAIL *</label><input required id="c-email" type="email" placeholder="you@college.edu" class="mt-2 w-full border-[2.5px] border-charcoal bg-ivory px-4 py-3 text-sm font-semibold" /></div>
+          <div class="grid sm:grid-cols-2 gap-4 mt-4">
+            <div><label class="font-grotesk font-bold text-xs tracking-widest">TOPIC</label><select id="c-topic" class="mt-2 w-full border-[2.5px] border-charcoal bg-ivory px-4 py-3 text-sm font-semibold"><option>Event Registration</option><option>Passes & Entry</option><option>Sponsorship</option><option>Stall Booking</option><option>Volunteering</option><option>Other</option></select></div>
+            <div><label class="font-grotesk font-bold text-xs tracking-widest">COLLEGE</label><input id="c-college" type="text" placeholder="Your college name" class="mt-2 w-full border-[2.5px] border-charcoal bg-ivory px-4 py-3 text-sm font-semibold" /></div>
+          </div>
+          <div class="mt-4"><label class="font-grotesk font-bold text-xs tracking-widest">MESSAGE *</label><textarea required id="c-msg" rows="4" placeholder="Tell us how we can help…" class="mt-2 w-full border-[2.5px] border-charcoal bg-ivory px-4 py-3 text-sm font-medium resize-none"></textarea></div>
+          <button type="submit" id="contactBtn" class="btn btn-terra w-full py-4 mt-6 text-sm">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+          <p class="text-center text-xs text-smoke mt-3">We usually reply within 24 hours on working days.</p>
+        </form>
+        <!-- FAQ -->
+        <div class="mt-8">
+          <h3 class="font-display text-2xl md:text-3xl mb-4">QUICK ANSWERS</h3>
+          <div class="space-y-3" id="faqWrap">
+            <div class="faq-item bg-paper border-[2.5px] border-charcoal hard-sm"><button onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-4 font-grotesk font-bold text-left text-sm md:text-base">Can outsiders / other colleges attend? <span class="faq-icon w-8 h-8 bg-charcoal text-ivory flex items-center justify-center text-lg shrink-0 ml-3">+</span></button><div class="faq-answer px-4"><p class="pb-4 text-sm text-smoke">Yes! All colleges are welcome. Carry a valid college ID + your pass. Star Night outsider passes are limited — book early.</p></div></div>
+            <div class="faq-item bg-paper border-[2.5px] border-charcoal hard-sm"><button onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-4 font-grotesk font-bold text-left text-sm md:text-base">Are passes refundable? <span class="faq-icon w-8 h-8 bg-charcoal text-ivory flex items-center justify-center text-lg shrink-0 ml-3">+</span></button><div class="faq-answer px-4"><p class="pb-4 text-sm text-smoke">Passes are non-refundable but transferable once till Feb 28 via our helpdesk. Day-pass upgrades to full passes are allowed.</p></div></div>
+            <div class="faq-item bg-paper border-[2.5px] border-charcoal hard-sm"><button onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-4 font-grotesk font-bold text-left text-sm md:text-base">How do team event registrations work? <span class="faq-icon w-8 h-8 bg-charcoal text-ivory flex items-center justify-center text-lg shrink-0 ml-3">+</span></button><div class="faq-answer px-4"><p class="pb-4 text-sm text-smoke">One member registers for the whole team and adds teammate names. You’ll get a confirmation on email + WhatsApp within 48 hrs.</p></div></div>
+            <div class="faq-item bg-paper border-[2.5px] border-charcoal hard-sm"><button onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-4 font-grotesk font-bold text-left text-sm md:text-base">Is there accommodation for outstation teams? <span class="faq-icon w-8 h-8 bg-charcoal text-ivory flex items-center justify-center text-lg shrink-0 ml-3">+</span></button><div class="faq-answer px-4"><p class="pb-4 text-sm text-smoke">Limited dorm accommodation is available on request. Mention it in your message and our hospitality team will call you back.</p></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-2 space-y-6">
+        <div class="bg-terracotta text-ivory border-[3px] border-charcoal hard p-6">
+          <h3 class="font-display text-2xl">FIND US ON CAMPUS</h3>
+          <div class="mt-4 space-y-3 text-sm">
+            <p class="flex gap-3"><i class="fa-solid fa-location-dot mt-1 text-mustard"></i><span><strong>OORJA Committee Room, Student Activity Centre,</strong><br>North Campus, University of Delhi,<br>Delhi — 110007</span></p>
+            <p class="flex gap-3 items-center"><i class="fa-solid fa-phone text-mustard"></i><span><strong>Helpline:</strong> +91 98110 24680 (10 AM – 8 PM)</span></p>
+            <p class="flex gap-3 items-center"><i class="fa-solid fa-envelope text-mustard"></i><span><strong>hello@oorjafest.in</strong></span></p>
+          </div>
+          <div class="flex gap-2 mt-5">
+            <a href="#" onclick="showToast('Opening Instagram…','success');return false;" class="w-10 h-10 bg-ivory text-charcoal border-2 border-charcoal flex items-center justify-center hover:bg-mustard transition-colors"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" onclick="showToast('Opening YouTube…','success');return false;" class="w-10 h-10 bg-ivory text-charcoal border-2 border-charcoal flex items-center justify-center hover:bg-mustard transition-colors"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" onclick="showToast('Opening X…','success');return false;" class="w-10 h-10 bg-ivory text-charcoal border-2 border-charcoal flex items-center justify-center hover:bg-mustard transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" onclick="showToast('Opening Facebook…','success');return false;" class="w-10 h-10 bg-ivory text-charcoal border-2 border-charcoal flex items-center justify-center hover:bg-mustard transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" onclick="showToast('Opening Spotify…','success');return false;" class="w-10 h-10 bg-ivory text-charcoal border-2 border-charcoal flex items-center justify-center hover:bg-mustard transition-colors"><i class="fa-brands fa-spotify"></i></a>
+          </div>
+        </div>
+        <div class="border-[3px] border-charcoal hard overflow-hidden bg-paper">
+          <iframe title="Campus Map" src="https://www.google.com/maps?q=North+Campus,+University+of+Delhi&output=embed" class="w-full h-64 grayscale-[.3] contrast-[1.05]" loading="lazy"></iframe>
+          <div class="p-4 flex items-center justify-between bg-paper border-t-[3px] border-charcoal"><span class="font-grotesk font-bold text-xs tracking-widest">NEAREST METRO: VISHWAVIDYALAYA • GATE 2</span><i class="fa-solid fa-train-subway text-terracotta"></i></div>
+        </div>
+        <div class="bg-olive text-ivory border-[3px] border-charcoal hard p-6">
+          <h3 class="font-display text-xl">CORE CONTACTS</h3>
+          <div class="mt-3 space-y-2 text-sm">
+            <div class="flex justify-between border-b border-ivory/20 pb-2"><span>Aarav Mehta (President)</span><strong>+91 98200 11223</strong></div>
+            <div class="flex justify-between border-b border-ivory/20 pb-2"><span>Diya Sharma (Vice President)</span><strong>+91 99870 44556</strong></div>
+            <div class="flex justify-between"><span>Yash Thakur (Sponsorship)</span><strong>+91 98111 77889</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-charcoal text-ivory pt-14 pb-6 relative overflow-hidden border-t-[3px] border-charcoal">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 relative">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-3"><div class="w-12 h-12 bg-terracotta border-2 border-ivory flex items-center justify-center font-display text-2xl pt-0.5">O</div><div class="font-display text-3xl">OORJA<span class="text-terracotta">.</span></div></div>
+        <p class="text-ivory/60 text-sm mt-4 leading-relaxed">The annual cultural heartbeat of North Campus. Run by students, powered by energy, remembered forever.</p>
+        <div class="flex gap-2 mt-5">
+          <a href="#" onclick="showToast('Opening Instagram…','success');return false;" class="w-10 h-10 bg-ivory/10 border border-ivory/20 flex items-center justify-center hover:bg-terracotta transition-colors"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" onclick="showToast('Opening YouTube…','success');return false;" class="w-10 h-10 bg-ivory/10 border border-ivory/20 flex items-center justify-center hover:bg-terracotta transition-colors"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" onclick="showToast('Opening X…','success');return false;" class="w-10 h-10 bg-ivory/10 border border-ivory/20 flex items-center justify-center hover:bg-terracotta transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" onclick="showToast('Opening Spotify…','success');return false;" class="w-10 h-10 bg-ivory/10 border border-ivory/20 flex items-center justify-center hover:bg-terracotta transition-colors"><i class="fa-brands fa-spotify"></i></a>
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <h4 class="font-grotesk font-bold text-xs tracking-[.25em] text-mustard">EXPLORE</h4>
+        <ul class="mt-4 space-y-2.5 text-sm text-ivory/70">
+          <li><a href="#" onclick="navigateTo('home');return false;" class="hover:text-mustard">Home</a></li>
+          <li><a href="#" onclick="goHomeSection('about');return false;" class="hover:text-mustard">About OORJA</a></li>
+          <li><a href="#" onclick="goHomeSection('lineup');return false;" class="hover:text-mustard">3 Nights</a></li>
+          <li><a href="#" onclick="navigateTo('events');return false;" class="hover:text-mustard">Events</a></li>
+          <li><a href="#" onclick="navigateTo('gallery');return false;" class="hover:text-mustard">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-3">
+        <h4 class="font-grotesk font-bold text-xs tracking-[.25em] text-mustard">TOP EVENTS</h4>
+        <ul class="mt-4 space-y-2.5 text-sm text-ivory/70">
+          <li><a href="#" onclick="navigateTo('events');return false;" class="hover:text-mustard">Battle of Bands</a></li>
+          <li><a href="#" onclick="navigateTo('events');return false;" class="hover:text-mustard">Nritya Dance Face-Off</a></li>
+          <li><a href="#" onclick="navigateTo('events');return false;" class="hover:text-mustard">HackOORJA</a></li>
+          <li><a href="#" onclick="navigateTo('events');return false;" class="hover:text-mustard">Nukkad Natak</a></li>
+          <li><a href="#" onclick="navigateTo('events');return false;" class="hover:text-mustard">Fashion Show — Vastra</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-3">
+        <h4 class="font-grotesk font-bold text-xs tracking-[.25em] text-mustard">GET UPDATES</h4>
+        <p class="text-sm text-ivory/60 mt-4">Lineup drops, early-bird alerts & aftermovies. No spam, only dhamaka.</p>
+        <form onsubmit="subscribeNews(event)" class="mt-4 flex"><input id="newsEmail" required type="email" placeholder="your@email.com" class="flex-1 bg-ivory/10 border border-ivory/20 px-4 py-3 text-sm placeholder:text-ivory/40 !shadow-none focus:!shadow-none" /><button class="bg-terracotta px-4 border border-terracotta hover:bg-mustard hover:text-charcoal hover:border-mustard transition-colors"><i class="fa-solid fa-arrow-right"></i></button></form>
+        <p class="text-xs text-ivory/40 mt-3">March 6–8, 2026 • Main Ground, North Campus</p>
+      </div>
+    </div>
+    <div class="font-display text-[19vw] md:text-[11rem] leading-none text-center text-ivory/[.05] select-none mt-8 -mb-4 md:-mb-8">OORJA</div>
+    <div class="border-t border-ivory/15 pt-5 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-ivory/50 font-grotesk tracking-wider">
+      <span>© 2026 OORJA FEST COMMITTEE • DESIGNED WITH LOVE BY THE STUDENT DESIGN TEAM</span>
+      <span class="flex gap-4"><a href="#" class="hover:text-mustard">PRIVACY</a><a href="#" class="hover:text-mustard">TERMS</a><a href="#" onclick="navigateTo('contact');return false;" class="hover:text-mustard">CONTACT</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-[70] w-12 h-12 bg-terracotta text-ivory border-[2.5px] border-charcoal hard-sm items-center justify-center hover:bg-charcoal transition-colors hidden"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- PASS MODAL -->
+<div id="passModal" class="fixed inset-0 z-[95] hidden items-center justify-center p-4 modal-bg" onclick="if(event.target===this)closePassModal()">
+  <div class="modal-panel bg-ivory border-[3px] border-charcoal hard-lg w-full max-w-lg max-h-[92vh] overflow-y-auto">
+    <div id="passStep1">
+      <div class="bg-charcoal text-ivory p-5 flex justify-between items-center border-b-[3px] border-charcoal sticky top-0">
+        <div><div class="font-grotesk font-bold text-[10px] tracking-[.3em] text-mustard">OORJA 2026 • OFFICIAL PASS</div><div class="font-display text-2xl">BOOK YOUR PASS</div></div>
+        <button onclick="closePassModal()" class="w-10 h-10 bg-terracotta border-2 border-ivory flex items-center justify-center hover:bg-ivory hover:text-charcoal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="p-6">
+        <label class="font-grotesk font-bold text-xs tracking-widest">1. CHOOSE PASS TYPE</label>
+        <div class="grid grid-cols-3 gap-2 mt-2" id="passTypes">
+          <button onclick="selectPass('day1',this)" data-pass="day1" class="pass-opt border-[2.5px] border-charcoal p-3 text-center bg-paper"><div class="font-grotesk font-bold text-xs">DAY 1</div><div class="font-display text-xl">₹299</div><div class="text-[10px] font-bold text-smoke">BHANGRA</div></button>
+          <button onclick="selectPass('day2',this)" data-pass="day2" class="pass-opt border-[2.5px] border-charcoal p-3 text-center bg-paper"><div class="font-grotesk font-bold text-xs">DAY 2</div><div class="font-display text-xl">₹349</div><div class="text-[10px] font-bold text-smoke">DJ NIGHT</div></button>
+          <button onclick="selectPass('full',this)" data-pass="full" class="pass-opt border-[2.5px] border-charcoal p-3 text-center bg-charcoal text-ivory"><div class="font-grotesk font-bold text-xs text-mustard">FULL 3-DAY</div><div class="font-display text-xl">₹699</div><div class="text-[10px] font-bold">BEST VALUE</div></button>
+        </div>
+        <button onclick="selectPass('squad',this)" data-pass="squad" class="pass-opt w-full mt-2 border-[2.5px] border-charcoal p-3 text-center bg-paper flex justify-between items-center px-5"><span class="font-grotesk font-bold text-sm">SQUAD PASS × 4 PEOPLE</span><span class="font-display text-2xl">₹1999</span></button>
+        <div class="grid grid-cols-2 gap-4 mt-5">
+          <div><label class="font-grotesk font-bold text-xs tracking-widest">QUANTITY</label><div class="flex items-center border-[2.5px] border-charcoal bg-paper mt-2"><button onclick="changeQty(-1)" class="w-10 h-11 font-bold text-lg hover:bg-cream">−</button><span id="passQty" class="flex-1 text-center font-display text-xl">1</span><button onclick="changeQty(1)" class="w-10 h-11 font-bold text-lg hover:bg-cream">+</button></div></div>
+          <div><label class="font-grotesk font-bold text-xs tracking-widest">TOTAL</label><div id="passTotal" class="mt-2 h-11 border-[2.5px] border-charcoal bg-mustard flex items-center justify-center font-display text-2xl">₹699</div></div>
+        </div>
+        <div class="mt-4 space-y-3">
+          <input id="p-name" type="text" placeholder="Full name *" class="w-full border-[2.5px] border-charcoal bg-paper px-4 py-3 text-sm font-semibold" />
+          <div class="grid grid-cols-2 gap-3"><input id="p-phone" type="tel" placeholder="Phone *" class="border-[2.5px] border-charcoal bg-paper px-4 py-3 text-sm font-semibold" /><input id="p-college" type="text" placeholder="College *" class="border-[2.5px] border-charcoal bg-paper px-4 py-3 text-sm font-semibold" /></div>
+          <input id="p-email" type="email" placeholder="Email *" class="w-full border-[2.5px] border-charcoal bg-paper px-4 py-3 text-sm font-semibold" />
+        </div>
+        <button onclick="confirmPass()" class="btn btn-terra w-full py-4 mt-5 text-sm">Confirm Booking <i class="fa-solid fa-ticket"></i></button>
+        <p class="text-[11px] text-center text-smoke mt-2">Pay on UPI at venue or online link on email • ID mandatory</p>
+      </div>
+    </div>
+    <div id="passStep2" class="hidden p-8 text-center">
+      <div class="w-20 h-20 bg-olive text-ivory rounded-full border-[3px] border-charcoal hard mx-auto flex items-center justify-center text-3xl"><i class="fa-solid fa-check"></i></div>
+      <h3 class="font-display text-4xl mt-5">YOU'RE IN!</h3>
+      <p class="text-smoke mt-2">Show this ticket ID at the gate with your college ID.</p>
+      <div class="mt-5 bg-charcoal text-ivory border-[3px] border-charcoal p-5 ticket-notch">
+        <div class="font-grotesk text-[10px] tracking-[.3em] text-mustard">OORJA 2026 • ADMIT</div>
+        <div id="ticketId" class="font-display text-3xl tracking-widest mt-1">OORJA-XXXXXX</div>
+        <div id="ticketDetail" class="text-sm text-ivory/70 mt-1">Full 3-Day Pass × 1</div>
+      </div>
+      <button onclick="closePassModal();showToast('Pass details sent to your email!','success')" class="btn btn-charcoal w-full py-3.5 mt-6 text-sm">Done — See You There!</button>
+    </div>
+  </div>
+</div>
+
+<!-- EVENT MODAL -->
+<div id="eventModal" class="fixed inset-0 z-[95] hidden items-center justify-center p-4 modal-bg" onclick="if(event.target===this)closeEventModal()">
+  <div class="modal-panel bg-ivory border-[3px] border-charcoal hard-lg w-full max-w-2xl max-h-[92vh] overflow-y-auto">
+    <div class="relative h-60 md:h-72"><img id="em-img" src="" class="w-full h-full object-cover" alt="Event" /><div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent"></div>
+      <button onclick="closeEventModal()" class="absolute top-4 right-4 w-10 h-10 bg-ivory border-2 border-charcoal flex items-center justify-center hover:bg-terracotta hover:text-ivory"><i class="fa-solid fa-xmark"></i></button>
+      <div class="absolute bottom-4 left-5"><span id="em-tag" class="bg-mustard font-grotesk font-bold text-[10px] tracking-widest px-3 py-1.5 border-2 border-charcoal">OFFICIAL</span><h3 id="em-title" class="font-display text-3xl md:text-5xl text-ivory mt-2"></h3></div>
+    </div>
+    <div class="p-6 md:p-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+        <div class="bg-paper border-2 border-charcoal p-3"><div class="text-[10px] font-grotesk font-bold tracking-widest text-smoke">DATE</div><div id="em-date" class="font-bold text-sm"></div></div>
+        <div class="bg-paper border-2 border-charcoal p-3"><div class="text-[10px] font-grotesk font-bold tracking-widest text-smoke">TIME</div><div id="em-time" class="font-bold text-sm"></div></div>
+        <div class="bg-paper border-2 border-charcoal p-3"><div class="text-[10px] font-grotesk font-bold tracking-widest text-smoke">VENUE</div><div id="em-venue" class="font-bold text-sm"></div></div>
+        <div class="bg-terracotta text-ivory border-2 border-charcoal p-3"><div class="text-[10px] font-grotesk font-bold tracking-widest">PRIZE</div><div id="em-prize" class="font-bold text-sm"></div></div>
+      </div>
+      <p id="em-desc" class="mt-5 text-[15px] leading-relaxed text-smoke"></p>
+      <div class="bg-cream border-2 border-charcoal p-4 mt-5 text-sm"><strong>RULES IN SHORT:</strong> <span id="em-rules"></span></div>
+      <form onsubmit="registerEvent(event)" class="mt-6 bg-paper border-[2.5px] border-charcoal p-5">
+        <h4 class="font-grotesk font-bold tracking-widest text-sm">QUICK REGISTER</h4>
+        <div class="grid sm:grid-cols-2 gap-3 mt-3"><input required id="e-name" type="text" placeholder="Your name *" class="border-2 border-charcoal bg-ivory px-3 py-2.5 text-sm font-semibold" /><input required id="e-phone" type="tel" placeholder="Phone *" class="border-2 border-charcoal bg-ivory px-3 py-2.5 text-sm font-semibold" /></div>
+        <input required id="e-college" type="text" placeholder="College + team size (e.g. Hindu College, Team of 4)" class="mt-3 w-full border-2 border-charcoal bg-ivory px-3 py-2.5 text-sm font-semibold" />
+        <button class="btn btn-terra w-full py-3 mt-4 text-xs">Register For This Event</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="fixed inset-0 z-[95] hidden items-center justify-center p-4 modal-bg" onclick="if(event.target===this)closeLightbox()">
+  <button onclick="closeLightbox()" class="absolute top-5 right-5 w-11 h-11 bg-ivory border-2 border-charcoal text-xl hover:bg-terracotta hover:text-ivory z-10"><i class="fa-solid fa-xmark"></i></button>
+  <button onclick="stepLightbox(-1)" class="absolute left-3 md:left-8 w-11 h-11 bg-ivory border-2 border-charcoal text-lg hover:bg-mustard z-10"><i class="fa-solid fa-chevron-left"></i></button>
+  <button onclick="stepLightbox(1)" class="absolute right-3 md:right-8 w-11 h-11 bg-ivory border-2 border-charcoal text-lg hover:bg-mustard z-10"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="max-w-4xl w-full bg-ivory border-[3px] border-charcoal hard-lg overflow-hidden modal-panel">
+    <img id="lb-img" src="" class="w-full max-h-[70vh] object-cover" alt="Gallery" />
+    <div class="p-4 flex justify-between items-center border-t-[3px] border-charcoal bg-paper"><span id="lb-cap" class="font-grotesk font-bold text-sm"></span><span id="lb-count" class="font-grotesk text-xs font-bold tracking-widest text-smoke"></span></div>
+  </div>
+</div>
+
+<!-- TOASTS -->
+<div id="toastWrap" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[99] flex flex-col gap-2 items-center w-[92%] max-w-md"></div>
+<canvas id="confetti" class="fixed inset-0 z-[96] pointer-events-none hidden"></canvas>
+
+
