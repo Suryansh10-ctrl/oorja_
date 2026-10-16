@@ -16,7 +16,7 @@ export default function Home({ onNavigate, onGoHomeSection, onOpenPassModal }) {
       <section className="relative min-h-[94vh] flex items-end md:items-center overflow-hidden bg-charcoal">
         <img
           src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1920&auto=format&fit=crop"
-          alt="OORJA festival crowd"
+          alt="ZION festival crowd"
           className="absolute inset-0 w-full h-full object-cover opacity-70"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/60 to-charcoal/30"></div>
@@ -59,7 +59,7 @@ export default function Home({ onNavigate, onGoHomeSection, onOpenPassModal }) {
             className="hero-anim font-display text-ivory leading-[.85] text-[26vw] sm:text-[20vw] lg:text-[11rem] xl:text-[12.5rem]"
             style={{ animationDelay: '.25s' }}
           >
-            OORJA<span className="text-mustard">.</span>
+            ZION<span className="text-mustard">.</span>
           </h1>
           <h2
             className="hero-anim font-grotesk font-bold text-mustardLight md:text-mustard text-xl sm:text-2xl md:text-4xl tracking-tight mt-3"
@@ -81,7 +81,7 @@ export default function Home({ onNavigate, onGoHomeSection, onOpenPassModal }) {
               onClick={() => onGoHomeSection('lineup')}
               className="btn btn-terra px-7 py-4 text-sm"
             >
-              Explore Oorja <i className="fa-solid fa-arrow-down"></i>
+              Explore Zion <i className="fa-solid fa-arrow-down"></i>
             </button>
             <button
               onClick={() => onNavigate('team')}
@@ -223,7 +223,7 @@ export default function Home({ onNavigate, onGoHomeSection, onOpenPassModal }) {
               </div>
               <h2 className="font-display text-5xl md:text-7xl leading-[.9]">
                 ABOUT<br />
-                <span className="text-terracotta">OORJA</span>
+                <span className="text-terracotta">ZION</span>
               </h2>
               <p className="font-hand text-2xl md:text-3xl text-olive mt-3 -rotate-2">
                 made by students, for students!
@@ -249,7 +249,7 @@ export default function Home({ onNavigate, onGoHomeSection, onOpenPassModal }) {
               <div className="mt-8 bg-charcoal text-ivory p-5 border-[3px] border-charcoal hard flex items-center gap-4">
                 <div className="font-display text-4xl text-mustard">14</div>
                 <div className="text-sm leading-snug">
-                  <strong>YEARS OF OORJA.</strong>
+                  <strong>YEARS OF ZION.</strong>
                   <br />
                   <span className="text-ivory/70">
                     Since 2012 — run 100% by the student committee, every stage, stall &amp; spotlight.
@@ -260,7 +260,7 @@ export default function Home({ onNavigate, onGoHomeSection, onOpenPassModal }) {
 
             <div className="lg:col-span-7 reveal-right">
               <p className="font-grotesk text-xl md:text-2xl font-bold leading-snug">
-                OORJA is not just a fest. It’s the{' '}
+                ZION is not just a fest. It’s the{' '}
                 <span className="bg-mustard px-2 border-2 border-charcoal">
                   heartbeat of campus
                 </span>{' '}
@@ -275,7 +275,7 @@ export default function Home({ onNavigate, onGoHomeSection, onOpenPassModal }) {
                 </p>
                 <p>
                   Whether you’re a singer waiting for your stage, a dancer born for the spotlight, a coder, a creator, a foodie or just here for the vibe with your friends —{' '}
-                  <strong className="text-charcoal">there is a place for you at OORJA.</strong> Come for one event, stay for the people.
+                  <strong className="text-charcoal">there is a place for you at ZION.</strong> Come for one event, stay for the people.
                 </p>
               </div>
 
@@ -305,7 +305,7 @@ export default function Home({ onNavigate, onGoHomeSection, onOpenPassModal }) {
 
               {/* STANDS FOR */}
               <h3 className="font-display text-2xl md:text-3xl mt-10 mb-5">
-                WHAT OORJA STANDS FOR
+                WHAT ZION STANDS FOR
               </h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="bg-terracotta text-ivory border-[2.5px] border-charcoal hard p-5 hard-hover">
@@ -338,7 +338,7 @@ export default function Home({ onNavigate, onGoHomeSection, onOpenPassModal }) {
                     <h4 className="font-grotesk font-bold tracking-widest">COMMUNITY</h4>
                   </div>
                   <p className="text-sm mt-3 text-ivory/90">
-                    Seniors, juniors, volunteers, rivals-turned-friends. OORJA is where the campus becomes family.
+                    Seniors, juniors, volunteers, rivals-turned-friends. ZION is where the campus becomes family.
                   </p>
                 </div>
                 <div className="bg-paper border-[2.5px] border-charcoal hard p-5 hard-hover">
@@ -349,7 +349,7 @@ export default function Home({ onNavigate, onGoHomeSection, onOpenPassModal }) {
                     <h4 className="font-grotesk font-bold tracking-widest">MEMORIES</h4>
                   </div>
                   <p className="text-sm mt-3 text-smoke">
-                    The photos you’ll show for years. The stories that start with “remember at OORJA when…”
+                    The photos you’ll show for years. The stories that start with “remember at ZION when…”
                   </p>
                 </div>
               </div>
@@ -377,7 +377,7 @@ export default function Home({ onNavigate, onGoHomeSection, onOpenPassModal }) {
             </div>
             <h2 className="font-display text-4xl sm:text-5xl md:text-7xl leading-[.95]">
               3 DAYS. 3 EXPERIENCES.<br />
-              <span className="text-mustard">1 OORJA.</span>
+              <span className="text-mustard">1 ZION.</span>
             </h2>
             <p className="text-ivory/70 mt-4 md:text-lg">
               Every night hits different. Pick your vibe — or better, live all three.
@@ -658,7 +658,7 @@ export default function Home({ onNavigate, onGoHomeSection, onOpenPassModal }) {
               MEMORIES THAT <span className="text-terracotta">STAY.</span>
             </h2>
             <p className="font-hand text-2xl text-olive mt-2">
-              real words from real oorja fam
+              real words from real zion fam
             </p>
           </div>
 
@@ -770,7 +770,7 @@ export default function Home({ onNavigate, onGoHomeSection, onOpenPassModal }) {
                 <li>✓ Bhangra + DJ + Star Night Entry</li>
                 <li>✓ All official eliminations access</li>
                 <li>✓ Afterparty + fireworks zone</li>
-                <li>✓ OORJA digital pass badge</li>
+                <li>✓ ZION digital pass badge</li>
                 <li>✓ 100% Free for everyone</li>
               </ul>
               <button
