@@ -41,13 +41,13 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'OORJA 2026 — Scintillating The Aura',
     description:
-      'OORJA 2026 — Where Energy Meets Celebration. Join us for 3 days of music, dance, competitions and star nights at North Campus!',
+      'ZION 2026 — Where Energy Meets Celebration. Join us for 3 days of music, dance, competitions and star nights at North Campus!',
     images: ['/og-image.jpg'],
   },
   icons: {
-    icon: '/og-image.jpg',
-    shortcut: '/og-image.jpg',
-    apple: '/og-image.jpg',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
   },
 };
 
@@ -69,9 +69,7 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
-        <link rel="icon" type="image/jpeg" href="/og-image.jpg" />
-        <link rel="shortcut icon" type="image/jpeg" href="/og-image.jpg" />
-        <link rel="apple-touch-icon" href="/og-image.jpg" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body>
         <FestProvider>{children}</FestProvider>
