@@ -55,7 +55,7 @@ export const culturalEvents: EventItem[] = [
     team: "8–20 members",
     desc: "Dhol, circle, and truth bombs. 12 teams, social themes, zero mics — just voice, energy and a crowd that gathers itself.",
     rules: "15–20 min incl. setup. Hindi / English / Hinglish. No recorded music; live dhol & props only.",
-    img: "https://images.unsplash.com/photo-1507924538820-ede94bff19d2?q=80&w=800&auto=format&fit=crop",
+    img: "https://i.pinimg.com/736x/5c/21/e5/5c21e5e9075b92e5fc0762d257c22858.jpg",
   },
   {
     id: 5,
@@ -84,19 +84,5 @@ export const culturalEvents: EventItem[] = [
     desc: "Cyphers, beatbox, diss battles. Delhi's underground meets campus poets. Crowd decides the finalist by noise meter.",
     rules: "90-sec rounds. No hate speech or slurs. Beat provided or acapella — your call.",
     img: "https://images.unsplash.com/photo-1571330735066-03aaa9429d89?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    id: 8,
-    title: "Shutter Up — Photography",
-    cat: "Art",
-    type: "official",
-    date: "All 3 Days",
-    time: "Submission by Mar 8, 2 PM",
-    venue: "Online + Exhibit Wall",
-    prize: "₹12,000",
-    team: "Solo",
-    desc: "Shoot the fest as it breathes. Best 30 prints exhibited near the food lane on Day 3. Theme: 'Energy in Motion'.",
-    rules: "Shot on any device during OORJA '26. Max 3 entries. Basic edits only, no composites.",
-    img: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=800&auto=format&fit=crop",
   },
 ];
